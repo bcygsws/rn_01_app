@@ -13,6 +13,4 @@ AppRegistry.registerComponent(appName, () => App);
  * eslint配置规则,参考：https://reactnative.520wcf.com/shi-yong-eslint-gui-fan-hua-dai-ma.html
  * 二、项目路由配置
  *
- *
- *
  * */
