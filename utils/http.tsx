@@ -1,5 +1,6 @@
-import axios from "axios";
-const  $http= axios.create({
+import axios from 'axios';
+
+const $http = axios.create({
     baseURL: '',
     timeout: 5000,
 });
@@ -17,7 +18,7 @@ $http.interceptors.request.use(
 $http.interceptors.response.use(
     (response) => {
         return response;
-    },(error)=>{
+    }, (error) => {
         return Promise.reject(error);
     }
 );
