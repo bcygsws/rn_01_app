@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
-import {RootStackParamList} from '../../routes';
+// import {StyleSheet} from 'react-native';
+import {RootStackParamList} from '@/routes';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import News from '../news';
-import Profile from '../profile';
-import NativeStack from '../stack';
-import Home from '../home';
+import News from '../news/index';
+import Profile from '../profile/index';
+import NativeStack from '../stack/index';
+import Home from '../home/index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -32,11 +32,11 @@ const Main = () => {
         <Tab.Screen name={'Profile'} component={Profile}/>
     </Tab.Navigator>);
 };
-const styles = StyleSheet.create({
-    homeContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+// const styles = StyleSheet.create({
+//     homeContainer: {
+//         alignItems: 'center',
+//         flex: 1,
+//         justifyContent: 'center',
+//     },
+// });
 export default Main;

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import {
-    Dimensions,
     ScrollView,
     StatusBar,
     StyleSheet,
@@ -21,15 +20,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RootStackParamList} from './routes';
-import Main from './views/main';
-import Register from './views/register';
-import {HEADER_HEIGHT, STATUS_BAR_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH} from "./utils/height.tsx";
+import {RootStackParamList} from '@/routes';
+import Main from '@/views/main/index';
+import Register from '@/views/register/index';
+import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH} from '@/utils/height';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const safePadding = '5%';
-
 
 function App(): React.JSX.Element {
     const isDarkMode = useColorScheme() === 'dark';
@@ -85,9 +82,9 @@ function App(): React.JSX.Element {
 
 const styles = StyleSheet.create({
     screen: {
-        width: WINDOW_WIDTH,
-        minHeight: WINDOW_HEIGHT - STATUS_BAR_HEIGHT,
         backgroundColor: 'pink',
+        minHeight: WINDOW_HEIGHT - STATUS_BAR_HEIGHT,
+        width: WINDOW_WIDTH,
     },
 });
 
