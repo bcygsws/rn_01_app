@@ -117,12 +117,20 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+    // 相机功能需要添加
+//     implementation project(':@react-native-camera-roll_camera-roll')
+//     implementation project(':@react-native-camera-roll_camera-roll')
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
     }
+
+
 }
 
 // rn矢量图标库需要添加的配置
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+
+

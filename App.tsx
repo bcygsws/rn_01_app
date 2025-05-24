@@ -24,6 +24,7 @@ import {RootStackParamList} from '@/routes';
 import Main from '@/views/main/index';
 import Register from '@/views/register/index';
 import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH} from '@/utils/height';
+import Camera from '@/components/camera';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -59,19 +60,11 @@ function App(): React.JSX.Element {
                         <Stack.Navigator initialRouteName={'Main'}>
                             <Stack.Screen name={'Main'} component={Main} options={
                                 {
-                                    headerShown: true,
-                                    headerTitle: '首页',
-                                    headerRight: () => (<View>
-                                        <Text style={{color: 'white'}}>
-                                            拍照
-                                        </Text>
-                                    </View>),
-                                    headerStyle: {
-                                        backgroundColor: '#02B38D',
-                                    },
+                                    headerShown: false,
                                 }
                             }/>
                             <Stack.Screen name={'Register'} component={Register}/>
+                            <Stack.Screen name={'Camera'} component={Camera}/>
                         </Stack.Navigator>
                     </View>
                 </ScrollView>

@@ -421,7 +421,22 @@ To learn more about React Native, take a look at the following resources:
 - Native层：
     - 精简核心模块，将非核心的模块拆分出去，作为社区模块，独立更新维护
 
-# 七、申请和配置react native安卓打包证书
+# 七、其他组件
+
+## 7.1 camera组件
+
+- 安装：react-native-camera组件已经被弃用；官方解释
+  We are looking for maintainers for this package, or to depreciate this in favor of react-native-vision-camera or
+  expo-camera, if nobody want to maintain this package.使用更推荐的react-native-vision-camera;安装：npm install
+  react-native-vision-camera --save
+- 按照官方文档配置；[react-native-vision-camera官方文档](https://react-native-vision-camera.com/docs/guides/)
+## 7.2 组件配置
+- 申请权限：npm install react-native-vision-camera --save
+- 获取相机设备
+- 从应用程序状态判断相机活跃状态；npm install @react-native-community/hooks --save
+- 获取节点相机拍照：npm install @react-native-camera-roll/camera-roll --save
+
+# 八、申请和配置react native安卓打包证书
 
 ## [参考文档](https://blog.csdn.net/tianpeng1996/article/details/126704329)
 

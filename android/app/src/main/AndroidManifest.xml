@@ -3,12 +3,20 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--react-native-vision-camera插件需要开启以下-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- optionally, if you want to record audio: -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
 
     <!--支持http协议API接口的访问-->
+    <!--android:requestLegacyExternalStorage="true";添加这个(用于确保你的应用在 Android 10 中仍然能够访问外部存储，
+    但如果你的应用目标是 Android 11 或更高版本，你应该考虑调整应用以符合 Scoped Storage 的要求-->
     <application
             android:name=".MainApplication"
             android:label="@string/app_name"
             android:usesCleartextTraffic="true"
+            android:requestLegacyExternalStorage="true"
             android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:allowBackup="false"

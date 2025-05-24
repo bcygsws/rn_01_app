@@ -17,6 +17,7 @@ module.exports = {
 		'react/no-unstable-nested-components': 0,// 可以使用 不稳定的组件
 		'react-native/no-unused-styles': 0,// 忽略未使用的样式
 		'react-native/split-platform-components': 0,// 忽略平台组件
+		'react-hooks/rules-of-hooks':  0,// 忽略hooks的规则
 	},
 
 };

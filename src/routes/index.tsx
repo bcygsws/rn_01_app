@@ -10,6 +10,7 @@ export type RootStackParamList = {
     News: undefined;
     NativeStack: undefined;
     Profile: undefined;
+    Camera: undefined;
 
 
 }
