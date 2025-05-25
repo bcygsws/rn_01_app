@@ -4,9 +4,8 @@ import {
     View,
     Text,
     StyleSheet,
-    PermissionsAndroid,
-    Platform,
-    Alert, Button, Pressable, ActivityIndicator
+    Pressable,
+    ActivityIndicator, Platform, Alert
 } from 'react-native';
 // 该包需要额外配置，参考：https://github.com/react-native-cameraroll/react-native-cameraroll
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
@@ -15,7 +14,7 @@ import {useAppState} from '@react-native-community/hooks';
 
 const CameraScreen = () => {
 
-    const { hasPermission, requestPermission } = useCameraPermission();
+    const {hasPermission, requestPermission} = useCameraPermission();
     const device = useCameraDevice('back', {
         physicalDevices: ['ultra-wide-angle-camera']
     });
@@ -34,29 +33,44 @@ const CameraScreen = () => {
         }
     }, [hasPermission]);
     if (!hasPermission) {
-        return (<ActivityIndicator />);
+        return (<ActivityIndicator/>);
     }
     if (!device) {
         return <Text>Camera device not found</Text>;
     }
-    const Tophoto = async () => {
-        const photo = await camera.current?.takePhoto({
-            flash: 'auto'
+    const saveImage = async (photo: any) => {
+        const path = Platform.OS === 'android' ? 'file://' + photo.path : photo.path;
+        // 使用CameraRoll保存到相册
+        CameraRoll.saveToCameraRoll(path, 'photo').then(() => {
+            Alert.alert('图片成功保存到相册');
+        }).catch((err) => {
+            console.log('err===', err);
+            Alert.alert('图片保存失败');
         });
-        await CameraRoll.saveAsset(`file://${photo?.path}`), {
-            type: 'photo',
-        };
+
+    };
+    const takeLocalPhoto = async () => {
+        if (camera.current) {
+            try {
+                const photo = await camera.current.takePhoto();
+                console.log('photo===', photo);
+                photo.id = new Date().getTime().toString();// 添加一个唯一id
+                saveImage(photo);// 将路径传递过去
+            } catch (err) {
+                console.log(err);
+            }
+        }
     };
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{flex: 1}}>
             <Camera
                 ref={camera}
                 style={styles.abusfell}
                 device={device}
                 isActive={isActive}
                 photo={true}
-             />
-            <Pressable onPress={Tophoto} style={styles.test} />
+            />
+            <Pressable onPress={takeLocalPhoto} style={styles.test}/>
         </View>
     );
 

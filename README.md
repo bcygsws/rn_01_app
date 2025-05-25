@@ -435,6 +435,8 @@ To learn more about React Native, take a look at the following resources:
 - 获取相机设备
 - 从应用程序状态判断相机活跃状态；npm install @react-native-community/hooks --save
 - 获取节点相机拍照：npm install @react-native-camera-roll/camera-roll --save
+7.3 参考文档
+- [React Native调用摄像头画面及拍照和保存图片(含base64保存图片)到相册全流程](https://juejin.cn/post/7338771486399905792)
 
 # 八、申请和配置react native安卓打包证书
 
