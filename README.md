@@ -444,7 +444,8 @@ To learn more about React Native, take a look at the following resources:
 
 - 安装： npm i @react-native-async-storage/async-storage --save
 - 配置：重点
-    - fdafads
+    - [官网文档](https://github.com/react-native-async-storage/async-storage?tab=readme-ov-file)
+    - [使用](https://react-native-async-storage.github.io/async-storage/docs/install/)
 
 # 八、申请和配置react native安卓打包证书
 

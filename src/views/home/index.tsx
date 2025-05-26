@@ -4,6 +4,7 @@ import {WINDOW_WIDTH} from '@/utils/height.tsx';
 import Swiper from 'react-native-swiper';
 // 获取地理位置组件@react-native-community/geolocation
 import Geolocation from '@react-native-community/geolocation';
+import AsyncStorageScreen from '@/components/storage';
 
 const Home = () => {
     return (<View>
@@ -48,6 +49,8 @@ const Home = () => {
                     <Image source={require('@/assets/images/img03.jpg')} style={styles.slideImage}/>
                 </Swiper>
             </View>
+
+            <AsyncStorageScreen/>
         </ScrollView>
     </View>);
 };
