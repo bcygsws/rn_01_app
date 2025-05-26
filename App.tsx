@@ -64,7 +64,7 @@ function App(): React.JSX.Element {
                                 }
                             }/>
                             <Stack.Screen name={'Register'} component={Register}/>
-                            <Stack.Screen name={'Camera'} component={Camera}/>
+                            <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
                         </Stack.Navigator>
                     </View>
                 </ScrollView>

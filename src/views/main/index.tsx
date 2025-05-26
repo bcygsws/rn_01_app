@@ -13,7 +13,7 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 const Tab = createBottomTabNavigator<RootStackParamList>();
 // 一级路由Main，还有Register等等
 
-type NavProps=NavigationProp<RootStackParamList>;
+type NavProps = NavigationProp<RootStackParamList>;
 const Main = () => {
     const navigation = useNavigation<NavProps>();
     return (<Tab.Navigator screenOptions={({route}) => ({
@@ -38,12 +38,14 @@ const Main = () => {
                 headerTitle: '首页',
                 headerTintColor: 'white',
                 headerRight: () => (<TouchableOpacity onPress={() => navigation.navigate('Camera')}>
-                    <Text style={{color: 'white'}}>
+                    <Text style={{color: 'white', marginRight: 10, fontSize: 18}}>
                         拍照
                     </Text>
                 </TouchableOpacity>),
                 headerStyle: {
                     backgroundColor: '#02B38D',
+                    elevation: 0,// 删除android header  阴影
+                    shadowOpacity: 0,// 删除ios header  阴影
                 },
             }
         }/>

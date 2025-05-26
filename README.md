@@ -430,13 +430,21 @@ To learn more about React Native, take a look at the following resources:
   expo-camera, if nobody want to maintain this package.使用更推荐的react-native-vision-camera;安装：npm install
   react-native-vision-camera --save
 - 按照官方文档配置；[react-native-vision-camera官方文档](https://react-native-vision-camera.com/docs/guides/)
+
 ## 7.2 组件配置
+
 - 申请权限：npm install react-native-vision-camera --save
 - 获取相机设备
 - 从应用程序状态判断相机活跃状态；npm install @react-native-community/hooks --save
 - 获取节点相机拍照：npm install @react-native-camera-roll/camera-roll --save
-7.3 参考文档
+  7.3 参考文档
 - [React Native调用摄像头画面及拍照和保存图片(含base64保存图片)到相册全流程](https://juejin.cn/post/7338771486399905792)
+
+## 7.2 本地数据持久化，类似web端的localStorage
+
+- 安装： npm i @react-native-async-storage/async-storage --save
+- 配置：重点
+    - fdafads
 
 # 八、申请和配置react native安卓打包证书
 

@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <!-- optionally, if you want to record audio: -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!--获取地理位置，以下权限声明二选一-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
 
 
     <!--支持http协议API接口的访问-->
