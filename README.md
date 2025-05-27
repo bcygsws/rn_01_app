@@ -446,6 +446,15 @@ To learn more about React Native, take a look at the following resources:
 - 配置：重点
     - [官网文档](https://github.com/react-native-async-storage/async-storage?tab=readme-ov-file)
     - [使用](https://react-native-async-storage.github.io/async-storage/docs/install/)
+- 在工具文件夹utils下，封装storage的增删改查方法
+
+## 7.3 获取地理位置信息
+
+- 安装：npm install @react-native-community/geolocation --save
+-
+配置：在AndroidManifest.xml中添加权限，下面两个权限配置，添加一个即可：[参考文档](https://github.com/michalchudziak/react-native-geolocation)
+    - <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    - <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 # 八、申请和配置react native安卓打包证书
 

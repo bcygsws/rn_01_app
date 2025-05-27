@@ -5,6 +5,7 @@ import Swiper from 'react-native-swiper';
 // 获取地理位置组件@react-native-community/geolocation
 import Geolocation from '@react-native-community/geolocation';
 import AsyncStorageScreen from '@/components/storage';
+import GeolocationScreen from '@/components/geolacation';
 
 const Home = () => {
     return (<View>
@@ -51,6 +52,7 @@ const Home = () => {
             </View>
 
             <AsyncStorageScreen/>
+            <GeolocationScreen/>
         </ScrollView>
     </View>);
 };
