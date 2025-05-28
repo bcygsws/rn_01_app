@@ -1,0 +1,28 @@
+{
+  "code": "200",
+  "location": [
+    {
+      "name": "西湖",
+      "id": "101210113",
+      "lat": "30.27293",
+      "lon": "120.14738",
+      "adm2": "杭州",
+      "adm1": "浙江省",
+      "country": "中国",
+      "tz": "Asia/Shanghai",
+      "utcOffset": "+08:00",
+      "isDst": "0",
+      "type": "city",
+      "rank": "35",
+      "fxLink": "https://www.qweather.com/weather/xihu-101210113.html"
+    }
+  ],
+  "refer": {
+    "sources": [
+      "QWeather"
+    ],
+    "license": [
+      "QWeather Developers License"
+    ]
+  }
+}
