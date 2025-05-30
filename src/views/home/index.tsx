@@ -1,17 +1,15 @@
 import {View, Text, ScrollView, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {WINDOW_WIDTH} from '@/utils/height.tsx';
-import Swiper from 'react-native-swiper';
 // 获取地理位置组件@react-native-community/geolocation
-import Geolocation from '@react-native-community/geolocation';
-import AsyncStorageScreen from '@/components/storage';
-import GeolocationScreen from '@/components/geolacation';
+import SwiperScreen from '@/components/swiper';
+import IndicesScreen from '@/components/indices';
 
 const Home = () => {
-    return (<View>
+    return (<View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-start'}}>
         {/*屏幕中内容可能超过高度，添加一个ScrollView*/}
-        <ScrollView>
-            <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{height: 290, backgroundColor: '#999999'}}>
+            <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity>
                     <View style={styles.itemContainer}>
                         <Ionicons name={'scan-outline'} color={'white'} size={40}/>
@@ -38,22 +36,13 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
             {/*滑动轮播图*/}
-            <View>
-                <Swiper style={styles.wrapper}
-                        showsButtons={true}
-                        loop={true}
-                        autoplay={true}
-                        autoplayTimeout={2.5}
-                >
-                    <Image source={require('@/assets/images/img01.jpg')} style={styles.slideImage}/>
-                    <Image source={require('@/assets/images/img02.jpg')} style={styles.slideImage}/>
-                    <Image source={require('@/assets/images/img03.jpg')} style={styles.slideImage}/>
-                </Swiper>
-            </View>
+            <SwiperScreen/>
 
-            <AsyncStorageScreen/>
-            <GeolocationScreen/>
-        </ScrollView>
+        </View>
+        {/*<AsyncStorageScreen/>*/}
+        {/*原因是：GeolocationScreen中嵌套又FlatList组件，他放在ScrollView中，会引发性能问题*/}
+        {/*<GeolocationScreen/>*/}
+        <IndicesScreen/>
     </View>);
 };
 const styles = StyleSheet.create({
@@ -68,17 +57,11 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 5,
     },
-    slideImage: {
-        height: 200,
-        width: WINDOW_WIDTH,
-    },
     text: {
         color: '#fff',
         fontSize: 30,
         fontWeight: 'bold'
     },
-    wrapper: {
-        height: 200,
-    }
+
 });
 export default Home;

@@ -53,8 +53,6 @@ function App(): React.JSX.Element {
                     barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                     backgroundColor={backgroundStyle.backgroundColor}
                 />
-                <ScrollView
-                    style={backgroundStyle}>
                     <View
                         style={[styles.screen, {backgroundColor: isDarkMode ? Colors.black : Colors.white}]}>
                         <Stack.Navigator initialRouteName={'Main'}>
@@ -67,7 +65,6 @@ function App(): React.JSX.Element {
                             <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
                         </Stack.Navigator>
                     </View>
-                </ScrollView>
             </View>
         </NavigationContainer>
     );
