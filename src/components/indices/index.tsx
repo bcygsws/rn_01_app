@@ -180,7 +180,10 @@ const IndicesScreen = () => {
             keyExtractor={(item) => item.type}
             initialNumToRender={10}
             windowSize={21}
-            ListHeaderComponent={<CityScreen/>}
+            ListHeaderComponent={<>
+                <SwiperScreen/>
+                <CityScreen/>
+            </>}
 
         />
     </View>);
