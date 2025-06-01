@@ -78,7 +78,8 @@ const CityScreen = () => {
 };
 const styles = StyleSheet.create({
     cityContainer: {
-        flex: 1,
+        // backgroundColor: 'red',
+        height: 50,
     },
     text: {
         fontSize: 20,

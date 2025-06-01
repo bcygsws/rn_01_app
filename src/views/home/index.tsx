@@ -4,11 +4,12 @@ import {WINDOW_WIDTH} from '@/utils/height.tsx';
 // 获取地理位置组件@react-native-community/geolocation
 import SwiperScreen from '@/components/swiper';
 import IndicesScreen from '@/components/indices';
+import CityScreen from '@/components/city';
 
 const Home = () => {
     return (<View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-start'}}>
         {/*屏幕中内容可能超过高度，添加一个ScrollView*/}
-        <View style={{height: 90, backgroundColor: '#999999'}}>
+        <View style={{height: 340}}>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity>
                     <View style={styles.itemContainer}>
@@ -36,7 +37,9 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
             {/*滑动轮播图*/}
-            {/*<SwiperScreen/>*/}
+            <SwiperScreen/>
+            {/*城市名称*/}
+            <CityScreen/>
 
         </View>
         {/*<AsyncStorageScreen/>*/}

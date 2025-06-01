@@ -168,30 +168,35 @@ const IndicesScreen = () => {
     };
     const renderItem = ({item}) => {
         return (<TouchableOpacity onPress={onPress}>
-            <View style={{flexDirection: 'column', backgroundColor: '#ccc', width: WINDOW_WIDTH, height: 50}}>
-                <Text style={{textAlign: 'center'}}>{item.type}</Text>
+            <View style={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#DFEDBC',
+                width: 100,
+                height: 50,
+                borderRadius: 10,
+                marginHorizontal: 5,
+            }}>
+                <Text style={{textAlign: 'center', color: '#333', marginBottom: 3}}>{item.name}</Text>
+                <Text style={{textAlign: 'center', color: '#02B38D'}}>{item.category}</Text>
             </View>
         </TouchableOpacity>);
     };
     return (<View style={styles.container}>
+        {/*initialNumToRender={10},最好刚刚填满一屏幕*/}
         <FlatList
             data={indices}
             renderItem={renderItem}
             keyExtractor={(item) => item.type}
-            initialNumToRender={10}
-            windowSize={21}
-            ListHeaderComponent={<>
-                <SwiperScreen/>
-                <CityScreen/>
-            </>}
-
+            initialNumToRender={5}
+            horizontal={true}
         />
     </View>);
 };
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        // flex: 1,
         justifyContent: 'center',
     },
 });
