@@ -141,7 +141,8 @@ const INDICES = [
     }
 ];
 const IndicesScreen = () => {
-    const [coord, setCoord] = useState<any>(useCoord());
+    // const [coord, setCoord] = useState<any>(useCoord());
+    const [coord] = useState<any>(useCoord());
     console.log('coord===', coord);
     const [indices, setIndices] = useState<any>([]);
 
@@ -166,7 +167,7 @@ const IndicesScreen = () => {
     const onPress = () => {
         console.log('onPress===');
     };
-    const renderItem = ({item}) => {
+    const renderItem = ({item}: any) => {
         return (<TouchableOpacity onPress={onPress}>
             <View style={{
                 flexDirection: 'column',
@@ -174,7 +175,7 @@ const IndicesScreen = () => {
                 justifyContent: 'center',
                 backgroundColor: '#DFEDBC',
                 width: 100,
-                height: 50,
+                height: 60,
                 borderRadius: 10,
                 marginHorizontal: 5,
             }}>

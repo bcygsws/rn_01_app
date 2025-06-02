@@ -5,6 +5,7 @@ import {WINDOW_WIDTH} from '@/utils/height.tsx';
 import SwiperScreen from '@/components/swiper';
 import IndicesScreen from '@/components/indices';
 import CityScreen from '@/components/city';
+import ThreeDaysWeather from '@/components/3d';
 
 const Home = () => {
     return (<View style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-start'}}>
@@ -46,6 +47,7 @@ const Home = () => {
         {/*原因是：GeolocationScreen中嵌套又FlatList组件，他放在ScrollView中，会引发性能问题*/}
         {/*<GeolocationScreen/>*/}
         <IndicesScreen/>
+        <ThreeDaysWeather/>
     </View>);
 };
 const styles = StyleSheet.create({

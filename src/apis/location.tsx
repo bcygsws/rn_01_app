@@ -10,6 +10,7 @@ export interface ILocation {
     longitude: number;
 }
 
+
 const getCityAPI = (location: ILocation) => {
     const {latitude, longitude} = location;
     return axios.request({
@@ -39,7 +40,21 @@ const getIndicesAPI = (location: ILocation) => {
     });
 };
 
+const get3dWeatherAPI = (location: ILocation) => {
+    const {latitude, longitude} = location;
+    return axios.request({
+        url: 'https://n63p3xwu98.re.qweatherapi.com/v7/indices/1d',
+        method: 'GET',
+        params: {
+            location: `${longitude},${latitude}`,
+            key: 'b88d0a14a2034fe2a3abf4c6c7f1af85',
+            gzip: 'n',
+            lang: 'zh'
+        }
+    });
+};
 export {
     getCityAPI,
-    getIndicesAPI
+    getIndicesAPI,
+    get3dWeatherAPI
 };

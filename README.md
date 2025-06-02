@@ -452,9 +452,19 @@ To learn more about React Native, take a look at the following resources:
 
 - 安装：npm install @react-native-community/geolocation --save
 -
+
 配置：在AndroidManifest.xml中添加权限，下面两个权限配置，添加一个即可：[参考文档](https://github.com/michalchudziak/react-native-geolocation)
-    - <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    - <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+## 7.4 线性渐变组件
+
+- 安装：npm install react-native-linear-gradient --save
+- 属性
+    - start: 渐变开始位置
+    - end: 渐变结束位置；start和end都不给，默认渐变方向是垂直向下
+    - colors: 渐变颜色
 
 # 八、申请和配置react native安卓打包证书
 
