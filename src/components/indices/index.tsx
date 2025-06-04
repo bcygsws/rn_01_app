@@ -158,7 +158,7 @@ const IndicesScreen = () => {
             setTimeout(() => {
                 const res = JSON.stringify(INDICES);
                 setIndices(JSON.parse(res));
-            }, 1500);
+            }, 1000);
         }
 
         getIndices();
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 5,
     },
 });
 export default IndicesScreen;

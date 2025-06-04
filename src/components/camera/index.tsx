@@ -1,5 +1,5 @@
-import {Camera, useCameraDevice, useCameraDevices, useCameraPermission} from 'react-native-vision-camera';
-import {useEffect, useRef, useState} from 'react';
+import {Camera, useCameraDevice, useCameraPermission} from 'react-native-vision-camera';
+import {useEffect, useRef} from 'react';
 import {
     View,
     Text,
@@ -52,7 +52,7 @@ const CameraScreen = () => {
     const takeLocalPhoto = async () => {
         if (camera.current) {
             try {
-                const photo = await camera.current.takePhoto();
+                const photo: any = await camera.current.takePhoto();
                 console.log('photo===', photo);
                 photo.id = new Date().getTime().toString();// 添加一个唯一id
                 saveImage(photo);// 将路径传递过去

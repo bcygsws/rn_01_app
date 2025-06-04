@@ -84,6 +84,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        missingDimensionStrategy 'react-native-camera', 'mlkit'
+
     }
     signingConfigs {
         debug {
@@ -116,6 +118,9 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    // 相机功能需要添加
+    implementation project(':react-native-camera')
+
 
     // 相机功能需要添加
 //     implementation project(':@react-native-camera-roll_camera-roll')
@@ -132,5 +137,8 @@ dependencies {
 
 // rn矢量图标库需要添加的配置
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+// 相机功能需要添加
+apply plugin: 'com.google.android.gms.strict-version-matcher-plugin'
+
 
 

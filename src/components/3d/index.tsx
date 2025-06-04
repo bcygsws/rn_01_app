@@ -3,6 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useEffect, useState} from 'react';
 import useCoord from '@/hooks/coord.tsx';
 // import {get3dWeatherAPI} from '@/apis/location.tsx';
+import Svg from '@/components/svg';
 
 /**
  * @Desc:三天天气的展示
@@ -123,14 +124,25 @@ const ThreeDaysWeather = () => {
             return (
                 <View key={index} style={styles.wrapper}>
                     <LinearGradient
-                        colors={['#4c669f', '#3b5998', '#192f6a']}
+                        colors={['#ddd', '#333']}
                         style={styles.linearGradient}
                         start={{x: 0.0, y: 0.0}}
                         end={{x: 1.0, y: 0.0}}
                     >
-                        <Text style={styles.buttonText}>
-                            {item?.textDay}
-                        </Text>
+                        <Text style={styles.buttonText}>{item?.fxDate}</Text>
+                        <View style={styles.tempList}>
+                            {/*使用svg:https://www.cnblogs.com/chenzxl/p/14656443.html*/}
+                            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                <Svg size={16} icon={item?.iconDay} color={'darkorange'}/>
+                                <Text
+                                    style={[styles.buttonText, {fontSize: 15}]}>{item?.textDay} {item?.tempMax}°C</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                <Text
+                                    style={[styles.buttonText, {fontSize: 15}]}>{item?.tempMin}°C {item?.textNight}</Text>
+                                <Svg size={16} icon={item?.iconNight} color={'blue'}/>
+                            </View>
+                        </View>
                     </LinearGradient>
                 </View>);
         })}
@@ -145,12 +157,22 @@ const styles = StyleSheet.create({
         margin: 10,
         textAlign: 'center',
     },
+    img: {
+        height: 15,
+        width: 15,
+    },
+
     linearGradient: {
         borderRadius: 15,
         flex: 1,
+        marginHorizontal: 5,
         marginVertical: 5,
         paddingLeft: 15,
         paddingRight: 15,
+    },
+    tempList: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     wrapper: {
         flex: 1,

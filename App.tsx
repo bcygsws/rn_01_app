@@ -7,10 +7,8 @@
 
 import React from 'react';
 import {
-    ScrollView,
     StatusBar,
     StyleSheet,
-    Text,
     useColorScheme,
     View,
 } from 'react-native';
@@ -21,8 +19,8 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@/routes';
-import Main from '@/views/main/index';
-import Register from '@/views/register/index';
+import Main from '@/pages/main/index';
+import Register from '@/pages/register/index';
 import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH} from '@/utils/height';
 import Camera from '@/components/camera';
 

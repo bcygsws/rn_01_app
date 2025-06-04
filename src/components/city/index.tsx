@@ -46,10 +46,21 @@ const CityScreen = () => {
                 // });
                 // const city=await $http.get('https://jsonplaceholder.typicode.com/posts?userId=2');
                 // console.log('city===', city);
+
                 setTimeout(() => {
                     let res = JSON.parse(JSON.stringify(LOCATION));
                     setCity(res);
-                }, 1500);
+                }, 1000);
+
+                // 测试聚合数据接口：查询城市实时空气质量:82代表杭州;测试通过
+                // const res = await fetch('http://apis.juhe.cn/fapigw/air/live?cityId=82&key=1caac683eb5e15c2ef9c8809d5237c81', {
+                //     headers: {
+                //         'content-type': 'application/x-www-form-urlencoded'
+                //     }
+                // });
+                // const result = await res.json();
+                // console.log('result===', result);
+
 
             } catch (e) {
                 console.log('city get error===', e);
@@ -79,10 +90,12 @@ const CityScreen = () => {
 const styles = StyleSheet.create({
     cityContainer: {
         // backgroundColor: 'red',
-        height: 50,
+        height: 40,
+        lineHeight: 40,
     },
     text: {
-        fontSize: 20,
+        boxSizing: 'border-box',
+        fontSize: 16,
         marginVertical: 10,
         textAlign: 'center',
     },
