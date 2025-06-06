@@ -465,6 +465,9 @@ To learn more about React Native, take a look at the following resources:
     - start: 渐变开始位置
     - end: 渐变结束位置；start和end都不给，默认渐变方向是垂直向下
     - colors: 渐变颜色
+# 7.5 登录或者注册，使用的动画
+- 安装：npm install react-native-animatable --save
+- 引入：import * as Animatable from 'react-native-animatable';
 
 # 八、申请和配置react native安卓打包证书
 

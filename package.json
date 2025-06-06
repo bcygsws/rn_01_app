@@ -25,6 +25,7 @@
     "npm": "^11.4.1",
     "react": "19.0.0",
     "react-native": "0.79.2",
+    "react-native-animatable": "^1.4.0",
     "react-native-camera": "^4.2.1",
     "react-native-gesture-handler": "^2.25.0",
     "react-native-linear-gradient": "^2.8.3",
@@ -35,7 +36,8 @@
     "react-native-svg-transformer": "^1.5.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-vision-camera": "^4.6.4"
+    "react-native-vision-camera": "^4.6.4",
+    "react-native-webview": "^13.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

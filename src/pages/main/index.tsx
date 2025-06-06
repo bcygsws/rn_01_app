@@ -47,11 +47,16 @@ const Main = () => {
                     elevation: 0,// 删除android header  阴影
                     shadowOpacity: 0,// 删除ios header  阴影
                 },
+                title: '首页'
             }
         }/>
-        <Tab.Screen name={'News'} component={News}/>
+        <Tab.Screen name={'News'} component={News} options={{
+            title: '新闻'
+        }}/>
         <Tab.Screen name={'NativeStack'} component={NativeStack}/>
-        <Tab.Screen name={'Profile'} component={Profile}/>
+        <Tab.Screen name={'Profile'} component={Profile} options={{
+            title: '我的'
+        }}/>
     </Tab.Navigator>);
 };
 // const styles = StyleSheet.create({

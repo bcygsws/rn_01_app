@@ -23,6 +23,10 @@ import Main from '@/pages/main/index';
 import Register from '@/pages/register/index';
 import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH} from '@/utils/height';
 import Camera from '@/components/camera';
+import Detail from '@/pages/detail';
+import About from '@/pages/about';
+import Setting from '@/pages/setting';
+import Login from '@/pages/login';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -51,18 +55,24 @@ function App(): React.JSX.Element {
                     barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                     backgroundColor={backgroundStyle.backgroundColor}
                 />
-                    <View
-                        style={[styles.screen, {backgroundColor: isDarkMode ? Colors.black : Colors.white}]}>
-                        <Stack.Navigator initialRouteName={'Main'}>
-                            <Stack.Screen name={'Main'} component={Main} options={
-                                {
-                                    headerShown: false,
-                                }
-                            }/>
-                            <Stack.Screen name={'Register'} component={Register}/>
-                            <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
-                        </Stack.Navigator>
-                    </View>
+                <View
+                    style={[styles.screen, {backgroundColor: isDarkMode ? Colors.black : Colors.white}]}>
+                    <Stack.Navigator initialRouteName={'Main'}>
+                        <Stack.Screen name={'Main'} component={Main} options={
+                            {
+                                headerShown: false,
+                            }
+                        }/>
+                        <Stack.Screen name={'Detail'} component={Detail} options={{title: '详情页'}}/>
+                        <Stack.Screen name={'Register'} component={Register}/>
+                        <Stack.Screen name={'Login'} component={Login} options={{
+                            headerShown: false,
+                        }}/>
+                        <Stack.Screen name={'Setting'} component={Setting} options={{title: '设置'}}/>
+                        <Stack.Screen name={'About'} component={About} options={{title: '关于'}}/>
+                        <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
+                    </Stack.Navigator>
+                </View>
             </View>
         </NavigationContainer>
     );
