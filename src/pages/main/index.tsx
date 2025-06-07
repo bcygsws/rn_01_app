@@ -9,14 +9,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 // 一级路由Main，还有Register等等
 
-type NavProps = NavigationProp<RootStackParamList>;
+type NavProps = NavigationProp<RootStackParamList, 'Main'>;
 const Main = () => {
     const navigation = useNavigation<NavProps>();
-    return (<Tab.Navigator screenOptions={({route}) => ({
+    const {isLogin} = useSelector((state: any) => state.auth);
+    return isLogin ? (<Tab.Navigator screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
             let iconName: string;
             if (route.name === 'Home') {
@@ -57,7 +59,7 @@ const Main = () => {
         <Tab.Screen name={'Profile'} component={Profile} options={{
             title: '我的'
         }}/>
-    </Tab.Navigator>);
+    </Tab.Navigator>) : (<>{navigation.navigate('Login')}</>);
 };
 // const styles = StyleSheet.create({
 //     homeContainer: {

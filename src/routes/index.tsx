@@ -14,6 +14,8 @@ export type RootStackParamList = {
     Camera: undefined;
     Setting: undefined;
     About: undefined;
+    Test: undefined;// 测试rn项目的redux状态管理方案
+    Splash: undefined;
 
 
 }

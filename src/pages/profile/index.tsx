@@ -7,6 +7,16 @@ import {RootStackParamList} from '@/routes';
 type NavProps = NavigationProp<RootStackParamList, 'Profile'>;
 const Profile = () => {
     const navigation = useNavigation<NavProps>();
+    /**
+     * @Desc:  Profile页面
+     * 我的-退出 按钮点击后
+     *
+     *
+     * */
+    const doLogout = () => {
+        navigation.navigate('Splash');
+
+    };
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -101,11 +111,34 @@ const Profile = () => {
                             <Ionicons name={'arrow-forward-outline'} color={'#999'} size={16}/>
                         </View>
                     </TouchableOpacity>
-
+                    {/*测试 redux状态管理方案*/}
                     <TouchableOpacity
                         onPress={() => {
-                            navigation.navigate('Register');
+                            navigation.navigate('Test');
                         }}
+                        style={{
+                            width: '100%',
+                        }}>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                height: 36,
+                                borderBottomWidth: 1,
+                                borderBottomColor: '#ccc',
+                                flex: 1,
+                            }}>
+                            <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+                                <Ionicons name={'enter-outline'} color={'green'} size={16}/>
+                                <Text style={{marginLeft: 5}}>redux测试</Text>
+                            </View>
+                            <Ionicons name={'arrow-forward-outline'} color={'#999'} size={16}/>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={doLogout}
                         style={{
                             width: '100%',
                         }}>

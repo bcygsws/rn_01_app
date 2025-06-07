@@ -11,7 +11,7 @@ import {
     Platform,
     ScrollView,
     TextInput,
-    TouchableOpacity,
+    TouchableOpacity, Alert,
 } from 'react-native';
 import * as Animatale from 'react-native-animatable';
 import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT} from '@/utils/height.tsx';
@@ -19,6 +19,8 @@ import {useEffect, useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@/routes';
+import {useDispatch, useSelector} from 'react-redux';
+import {LOGIN_SUCCESS} from '@/store/modules/authStore.tsx';
 
 const LoginScreen = () => {
         // 当前输入的账号信息：info
@@ -33,6 +35,8 @@ const LoginScreen = () => {
         // 监听账号和密码框是否获得焦点
         const userRef = useRef<TextInput>(null);
         const pwdRef = useRef<TextInput>(null);
+
+        const dispatch = useDispatch();
         // 操作时，传递的参数e，就是用户名或密码本身了
         useEffect(() => {
             info.username.length >= 2 ? setIsUserValid(true) :
@@ -64,8 +68,38 @@ const LoginScreen = () => {
          * */
 
         const doLogin = () => {
-            // 跳转到主页
-            navigation.navigate('Main');
+            const {password, username} = info;
+            if (!username && !password) {
+                Alert.alert('提醒', '请输入用户名和密码', [{
+                    text: '确定', onPress: () => {
+                    }
+                }]);
+                return;
+            }
+            if (!password) {
+                Alert.alert('提醒', '请输入密码', [{
+                    text: '确定', onPress: () => {
+                    }
+                }]);
+                return;
+            }
+            if (!username) {
+                Alert.alert('提醒', '请输入用户名', [{
+                    text: '确定', onPress: () => {
+                    }
+                }]);
+                return;
+            }
+            if (username && username.length < 2 || password && password.length < 2) {
+                Alert.alert('提醒', '用户名和密码长度不能小于2位', [{
+                    text: '确定', onPress: () => {
+                    }
+                }]);
+            } else {
+                dispatch(LOGIN_SUCCESS(true));// 登录成功，修改isLogin为true
+                // 跳转到主页
+                navigation.navigate('Main');
+            }
         };
 
         /**
@@ -75,6 +109,15 @@ const LoginScreen = () => {
         const doRegister = () => {
             // 跳转到注册页
             navigation.navigate('Register');
+        };
+        /**
+         * @Desc；重置功能resetForm()
+         *
+         * */
+        const resetForm = () => {
+            setInfo({...info, username: '', password: ''});
+            userRef.current?.clear();
+            pwdRef.current?.clear();
         };
 
         return (
@@ -99,7 +142,7 @@ const LoginScreen = () => {
                                 alignItems: 'center',
                             }}>
                                 <Ionicons name={'person-outline'} color={'#666'} size={18}
-                                          style={{width: 20, marginRight: 5}}/>
+                                          style={styles.insertLeftIcon}/>
                                 <TextInput
                                     style={styles.input}
                                     placeholder={'用户名'}
@@ -118,8 +161,10 @@ const LoginScreen = () => {
                             {isUserValid ? <View style={styles.validText}><Text/></View> :
                                 <View style={styles.validText}><Text
                                     style={{color: 'red', fontSize: 12}}>用户名长度不能小于2</Text></View>}
+                            {/*flex 布局；从左到右，行排列；所有才有left:0，就可以实现内嵌图标*/}
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                                <Ionicons name={'lock-closed-outline'} color={'#666'} size={18} style={{marginRight: 5}}/>
+                                <Ionicons name={'lock-closed-outline'} color={'#666'} size={18}
+                                          style={styles.insertLeftIcon}/>
                                 <TextInput
                                     style={styles.input}
                                     placeholder={'密码'}
@@ -155,15 +200,12 @@ const LoginScreen = () => {
                             </View>
                             {isPwdValid ?
                                 <View style={styles.validText}><Text/>
-                                    <TouchableOpacity style={{width: 36}} onPress={() => {
-                                        setInfo({...info, username: '', password: ''});
-                                        userRef.current?.blur();
-                                        pwdRef.current?.blur();
-                                    }}>
-                                        <View style={{
-                                            height: 20,
-                                        }}>
-                                            < Text style={{flex: 1, fontSize: 12, color: '#2196f3'}}>Reset</Text>
+                                    <TouchableOpacity style={{width: 30}} onPress={resetForm}>
+                                        <View style={styles.reset}>
+                                            < Text style={{
+                                                fontSize: 12,
+                                                color: '#2196f3',
+                                            }}>重置</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </View> :
@@ -171,13 +213,9 @@ const LoginScreen = () => {
                                     <Text
                                         style={{color: 'red', fontSize: 12}}>密码长度不能小于2</Text>
                                     {/*重置表单*/}
-                                    <TouchableOpacity style={{width: 30}} onPress={() => {
-                                        setInfo({...info, username: '', password: ''});
-                                    }}>
-                                        <View style={{
-                                            height: 20,
-                                        }}>
-                                            < Text style={{flex: 1, fontSize: 12, color: '#2196f3'}}>重置</Text>
+                                    <TouchableOpacity style={{width: 30}} onPress={resetForm}>
+                                        <View style={styles.reset}>
+                                            < Text style={{fontSize: 12, color: '#2196f3'}}>重置</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </View>
@@ -187,11 +225,12 @@ const LoginScreen = () => {
                             <TouchableOpacity style={styles.btn}
                                               onPress={doLogin}>
                                 <Text style={{
-                                    color: '#eeeeee',
+                                    color: '#eeeeee'
                                 }}>登录</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={[styles.btn, {backgroundColor: '#cccccc'}]}
-                                              onPress={doRegister}>
+                            <TouchableOpacity
+                                style={[styles.btn, {backgroundColor: '#fff', borderWidth: 1, borderColor: '#2196f3'}]}
+                                onPress={doRegister}>
                                 <Text style={{color: '#2196f3'}}>注册</Text>
                             </TouchableOpacity>
 
@@ -207,10 +246,11 @@ const styles = StyleSheet.create({
     btn: {
         alignItems: 'center',
         backgroundColor: '#2196f3',
+        borderRadius: 10,
         flexDirection: 'row',
         height: 36,
         justifyContent: 'center',
-        marginBottom: 10,
+        marginBottom: 8,
         width: '100%',
     },
     check: {// 校验输入的用户名或者密码长度大于2，则显示一个对勾
@@ -222,7 +262,7 @@ const styles = StyleSheet.create({
         right: 5,
         textAlign: 'center',
         width: 30,
-        zIndex: 99999999,
+        zIndex: 9999,
 
     },
     footer: {
@@ -239,10 +279,25 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: '#eee',
+        borderRadius: 10,
         color: 'black',
         flex: 1,
         height: 40,
-        position: 'relative',
+        paddingLeft: 25,
+        position: 'relative'
+    },
+    insertLeftIcon: {
+        left: 0,
+        marginRight: 5,
+        position: 'absolute',
+        width: 20,
+        zIndex: 9999
+    },
+    reset: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        height: 20,
+        justifyContent: 'flex-end'
     },
     text: {
         color: 'white',

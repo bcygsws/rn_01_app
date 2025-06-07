@@ -27,6 +27,10 @@ import Detail from '@/pages/detail';
 import About from '@/pages/about';
 import Setting from '@/pages/setting';
 import Login from '@/pages/login';
+import Test from '@/pages/test';
+import {Provider} from 'react-redux';
+import store from '@/store';
+import Splash from '@/pages/splash';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -49,32 +53,36 @@ function App(): React.JSX.Element {
      */
 
     return (
-        <NavigationContainer>
-            <View style={backgroundStyle}>
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                    backgroundColor={backgroundStyle.backgroundColor}
-                />
-                <View
-                    style={[styles.screen, {backgroundColor: isDarkMode ? Colors.black : Colors.white}]}>
-                    <Stack.Navigator initialRouteName={'Main'}>
-                        <Stack.Screen name={'Main'} component={Main} options={
-                            {
+        <Provider store={store}>
+            <NavigationContainer>
+                <View style={backgroundStyle}>
+                    <StatusBar
+                        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                        backgroundColor={backgroundStyle.backgroundColor}
+                    />
+                    <View
+                        style={[styles.screen, {backgroundColor: isDarkMode ? Colors.black : Colors.white}]}>
+                        <Stack.Navigator initialRouteName={'Main'}>
+                            <Stack.Screen name={'Main'} component={Main} options={
+                                {
+                                    headerShown: false,
+                                }
+                            }/>
+                            <Stack.Screen name={'Detail'} component={Detail} options={{title: '详情页'}}/>
+                            <Stack.Screen name={'Register'} component={Register} options={{title: '注册'}}/>
+                            <Stack.Screen name={'Login'} component={Login} options={{
                                 headerShown: false,
-                            }
-                        }/>
-                        <Stack.Screen name={'Detail'} component={Detail} options={{title: '详情页'}}/>
-                        <Stack.Screen name={'Register'} component={Register}/>
-                        <Stack.Screen name={'Login'} component={Login} options={{
-                            headerShown: false,
-                        }}/>
-                        <Stack.Screen name={'Setting'} component={Setting} options={{title: '设置'}}/>
-                        <Stack.Screen name={'About'} component={About} options={{title: '关于'}}/>
-                        <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
-                    </Stack.Navigator>
+                            }}/>
+                            <Stack.Screen name={'Setting'} component={Setting} options={{title: '设置'}}/>
+                            <Stack.Screen name={'About'} component={About} options={{title: '关于'}}/>
+                            <Stack.Screen name={'Camera'} component={Camera} options={{title: '相机'}}/>
+                            <Stack.Screen name={'Test'} component={Test} options={{title: '测试'}}/>
+                            <Stack.Screen name={'Splash'} component={Splash} options={{headerShown: false}}/>
+                        </Stack.Navigator>
+                    </View>
                 </View>
-            </View>
-        </NavigationContainer>
+            </NavigationContainer>
+        </Provider>
     );
 }
 

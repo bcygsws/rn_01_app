@@ -192,6 +192,7 @@ const IndicesScreen = () => {
             keyExtractor={(item) => item.type}
             initialNumToRender={5}
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
         />
     </View>);
 };

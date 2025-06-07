@@ -465,7 +465,9 @@ To learn more about React Native, take a look at the following resources:
     - start: 渐变开始位置
     - end: 渐变结束位置；start和end都不给，默认渐变方向是垂直向下
     - colors: 渐变颜色
+
 # 7.5 登录或者注册，使用的动画
+
 - 安装：npm install react-native-animatable --save
 - 引入：import * as Animatable from 'react-native-animatable';
 
@@ -487,6 +489,14 @@ To learn more about React Native, take a look at the following resources:
 ## Bug2:Unable to load script.Make sure you‘re either running a metro server（ run 'react-native start' ）
 
 - [参考文档](https://blog.csdn.net/qq_35822665/article/details/146938780)
+
+# 项目优化
+
+## 1.使用第三方UI组件库：react-native-paper
+
+## 2.添加项目logo
+
+## 3.添加广告图片
 
 
 
