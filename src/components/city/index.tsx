@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import useCoord from '@/hooks/coord.tsx';
 import {Text, View, StyleSheet} from 'react-native';
+import {getCityAPI} from '@/apis/location.tsx';
 
 const LOCATION = {
     'name': '西湖',
@@ -47,10 +48,6 @@ const CityScreen = () => {
                 // const city=await $http.get('https://jsonplaceholder.typicode.com/posts?userId=2');
                 // console.log('city===', city);
 
-                setTimeout(() => {
-                    let res = JSON.parse(JSON.stringify(LOCATION));
-                    setCity(res);
-                }, 1000);
 
                 // 测试聚合数据接口：查询城市实时空气质量:82代表杭州;测试通过
                 // const res = await fetch('http://apis.juhe.cn/fapigw/air/live?cityId=82&key=1caac683eb5e15c2ef9c8809d5237c81', {
@@ -61,26 +58,36 @@ const CityScreen = () => {
                 // const result = await res.json();
                 // console.log('result===', result);
 
+                    setTimeout(() => {
+                        let res = JSON.parse(JSON.stringify(LOCATION));
+                        setCity(res);
+                    }, 1000);
 
-            } catch (e) {
-                console.log('city get error===', e);
-            }
+                } catch (e) {
+                    console.log('city get error===', e);
+                }
 
-            // try {
-            //     // const res = await fetch(`https://n63p3xwu98.re.qweatherapi.com/geo/v2/city/lookup?key=b88d0a14a2034fe2a3abf4c6c7f1af85&location=${coord.longitude},${coord.latitude}&gzip=n`);
-            //     const res = await fetch(`https://n63p3xwu98.re.qweatherapi.com/geo/v2/city/lookup?key=b88d0a14a2034fe2a3abf4c6c7f1af85&location=${coord.longitude},${coord.latitude}&gzip=n`);
-            //     const city = await res.json();
-            //     console.log('city===', city);
-            //
+                // try {
+                //     // const res = await fetch(`https://n63p3xwu98.re.qweatherapi.com/geo/v2/city/lookup?key=b88d0a14a2034fe2a3abf4c6c7f1af85&location=${coord.longitude},${coord.latitude}&gzip=n`);
+                //     const res = await fetch(`https://n63p3xwu98.re.qweatherapi.com/geo/v2/city/lookup?key=b88d0a14a2034fe2a3abf4c6c7f1af85&location=${coord.longitude},${coord.latitude}&gzip=n`);
+                //     const city = await res.json();
+                //     console.log('city===', city);
+                //
+                // } catch (e) {
+                //     console.log('city get error===', e);
+                // }
+
+                // const res = await getCityAPI(coord);
+                // console.log('res===', res);
             // } catch (e) {
             //     console.log('city get error===', e);
             // }
 
-
         }
 
         getCity();
-    }, []);
+    }, [])
+    ;
     return (
         <View style={styles.cityContainer}>
             <Text style={styles.text}>{city?.country}{city?.adm1}{city?.adm2}</Text>

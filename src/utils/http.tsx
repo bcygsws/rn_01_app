@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const $http = axios.create({
     // baseURL: 'https://n63p3xwu98.re.qweatherapi.com/',
-    baseURL: '',
+    // baseURL: '',
     timeout: 5000,
 });
 

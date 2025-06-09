@@ -13,25 +13,27 @@ import {
     TextInput,
     TouchableOpacity, Alert,
 } from 'react-native';
-import * as Animatale from 'react-native-animatable';
+import * as Animatable from 'react-native-animatable';
 import {STATUS_BAR_HEIGHT, WINDOW_HEIGHT} from '@/utils/height.tsx';
 import {useEffect, useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@/routes';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {LOGIN_SUCCESS} from '@/store/modules/authStore.tsx';
+import {loginAPI} from '@/apis/login.tsx';
 
 const LoginScreen = () => {
         // 当前输入的账号信息：info
-        const [info, setInfo] = useState({username: '', password: ''});
+        // 测试账号：bcygsws@gmail.com 123456
+        const [info, setInfo] = useState({username: 'bcygsws@gmail.com', password: '123456'});
         // 输入的用户名或者密码是否有效
         const [isUserValid, setIsUserValid] = useState(false);
         const [isPwdValid, setIsPwdValid] = useState(false);
         // 控制是否隐藏密码
         const [textSecure, setTextSecure] = useState(true);
         // 控制密码的显示或者隐藏
-        const showRef = useRef<Animatale.View>(null);
+        const showRef = useRef<Animatable.View>(null);
         // 监听账号和密码框是否获得焦点
         const userRef = useRef<TextInput>(null);
         const pwdRef = useRef<TextInput>(null);
@@ -67,39 +69,51 @@ const LoginScreen = () => {
          *
          * */
 
-        const doLogin = () => {
-            const {password, username} = info;
-            if (!username && !password) {
-                Alert.alert('提醒', '请输入用户名和密码', [{
-                    text: '确定', onPress: () => {
-                    }
-                }]);
-                return;
+        const doLogin = async () => {
+            try {
+                const {password, username} = info;
+                if (!username && !password) {
+                    Alert.alert('提醒', '请输入用户名和密码', [{
+                        text: '确定', onPress: () => {
+                        }
+                    }]);
+                    return;
+                }
+                if (!password) {
+                    Alert.alert('提醒', '请输入密码', [{
+                        text: '确定', onPress: () => {
+                        }
+                    }]);
+                    return;
+                }
+                if (!username) {
+                    Alert.alert('提醒', '请输入用户名', [{
+                        text: '确定', onPress: () => {
+                        }
+                    }]);
+                    return;
+                }
+                if (username && username.length < 2 || password && password.length < 2) {
+                    Alert.alert('提醒', '用户名和密码长度不能小于2位', [{
+                        text: '确定', onPress: () => {
+                        }
+                    }]);
+                } else {
+                    const res = await loginAPI({username, password});
+                    console.log('res===', res.data);
+                    // Alert.alert('提醒', '获取数据', [{
+                    //     text: '确定', onPress: () => {
+                    //     }
+                    // }]);
+                    dispatch(LOGIN_SUCCESS(true));// 登录成功，修改isLogin为true
+                    // 跳转到主页
+                    navigation.navigate('Main');
+
+                }
+            } catch (e) {
+                console.log('login e===', e);
             }
-            if (!password) {
-                Alert.alert('提醒', '请输入密码', [{
-                    text: '确定', onPress: () => {
-                    }
-                }]);
-                return;
-            }
-            if (!username) {
-                Alert.alert('提醒', '请输入用户名', [{
-                    text: '确定', onPress: () => {
-                    }
-                }]);
-                return;
-            }
-            if (username && username.length < 2 || password && password.length < 2) {
-                Alert.alert('提醒', '用户名和密码长度不能小于2位', [{
-                    text: '确定', onPress: () => {
-                    }
-                }]);
-            } else {
-                dispatch(LOGIN_SUCCESS(true));// 登录成功，修改isLogin为true
-                // 跳转到主页
-                navigation.navigate('Main');
-            }
+
         };
 
         /**
@@ -131,7 +145,7 @@ const LoginScreen = () => {
                     <View style={styles.welText}>
                         <Text style={styles.text}>Welcome!</Text>
                     </View>
-                    <Animatale.View animation={'fadeInUpBig'} style={styles.footer}>
+                    <Animatable.View animation={'fadeInUpBig'} style={styles.footer}>
                         {/*登录表单*/}
                         {/*Bug修复；必须给ScrollView添加该属性，否则其内部嵌入的TouchOpacity无法提交；参考：
                     https://juejin.cn/post/6844903697558798350*/}
@@ -153,9 +167,9 @@ const LoginScreen = () => {
                                 />
                                 {
                                     isUserValid && info.username.length ?
-                                        <Animatale.View animation={'bounceIn'} style={styles.check}>
+                                        <Animatable.View animation={'bounceIn'} style={styles.check}>
                                             <Ionicons name={'checkmark-circle-outline'} color={'#666'} size={20}/>
-                                        </Animatale.View> : null
+                                        </Animatable.View> : null
                                 }
                             </View>
                             {isUserValid ? <View style={styles.validText}><Text/></View> :
@@ -186,13 +200,13 @@ const LoginScreen = () => {
                                                 setTextSecure(!textSecure);
                                                 console.log('showRef.current===', showRef.current);
                                             }}>
-                                            <Animatale.View animation={'bounceIn'} style={styles.check} ref={showRef}>
+                                            <Animatable.View animation={'bounceIn'} style={styles.check} ref={showRef}>
                                                 {
                                                     textSecure ? <Ionicons name={'eye-outline'} color={'#666'} size={20}/> :
                                                         <Ionicons name={'eye-off-outline'} color={'#666'} size={20}/>
 
                                                 }
-                                            </Animatale.View>
+                                            </Animatable.View>
                                         </TouchableOpacity>
                                         :
                                         null
@@ -235,7 +249,7 @@ const LoginScreen = () => {
                             </TouchableOpacity>
 
                         </ScrollView>
-                    </Animatale.View>
+                    </Animatable.View>
                 </ImageBackground>
 
             </View>

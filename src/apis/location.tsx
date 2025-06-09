@@ -15,6 +15,7 @@ const getCityAPI = (location: ILocation) => {
     const {latitude, longitude} = location;
     return axios.request({
         url: 'https://n63p3xwu98.re.qweatherapi.com/geo/v2/city/lookup',
+        // url: 'https://10.0.2.2/geo/v2/city/lookup',
         method: 'GET',
         params: {
             location: `${longitude},${latitude}`,

@@ -3,7 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@/routes';
-import {WINDOW_WIDTH} from '@/utils/height';
+import { WINDOW_WIDTH} from '@/utils/height';
 
 type NavProps = NavigationProp<RootStackParamList, 'Splash'>;
 const Splash = () => {
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         flex: 1,
+        height: '100%',
         justifyContent: 'center',
     },
     world: {
