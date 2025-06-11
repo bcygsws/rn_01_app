@@ -99,8 +99,8 @@ const LoginScreen = () => {
                         }
                     }]);
                 } else {
-                    const res = await loginAPI({username, password});
-                    console.log('res===', res.data);
+                    // const res = await loginAPI({username, password});
+                    // console.log('res===', res.data);
                     // Alert.alert('提醒', '获取数据', [{
                     //     text: '确定', onPress: () => {
                     //     }
