@@ -247,10 +247,15 @@ To learn more about React Native, take a look at the following resources:
 #### 安装
 
 - 安装核心功能 npm install --save @react-navigation/native --save
-- 其他必要的依赖：npm install react-native-reanimated(动画增强) react-native-gesture-handler（手势处理,react-navigation
-  7版本不需要了）
-  react-native-screens（屏幕处理组件）
-  react-native-safe-area-context（处理刘海屏的问题） @react-native-community/masked-view --save
+- 其他必要的依赖：(六大其他依赖：动 手 屏 底 刘 蒙版)
+    - npm install react-native-reanimated(动画增强)
+    - react-native-gesture-handler（手势处理,react-navigation
+      7版本不需要了）
+    - react-native-screens（屏幕处理组件）
+    - react-native-pager-view，material-bottom-tabs（底部导航）依赖的组件
+    - react-native-safe-area-context（处理刘海屏的问题）
+    - @react-native-community/masked-view
+      图像上添加一个带有蒙版遮罩的效果);[蒙版遮罩实例](https://devpress.csdn.net/react/630a0640c677032930816228.html)
 
 #### 链接
 
