@@ -254,8 +254,8 @@ To learn more about React Native, take a look at the following resources:
     - react-native-screens（屏幕处理组件）
     - react-native-pager-view，material-bottom-tabs（底部导航）依赖的组件
     - react-native-safe-area-context（处理刘海屏的问题）
-    - @react-native-community/masked-view
-      图像上添加一个带有蒙版遮罩的效果);[蒙版遮罩实例](https://devpress.csdn.net/react/630a0640c677032930816228.html)
+    - @react-native-community/masked-view;以此实现在
+      图像上添加一个带有蒙版遮罩的效果。[蒙版遮罩实例](https://devpress.csdn.net/react/630a0640c677032930816228.html)
 
 #### 链接
 
