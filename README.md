@@ -269,7 +269,8 @@ To learn more about React Native, take a look at the following resources:
 
 #### 添加导航容器
 
-- 在App.js或者App.tsx或者index.js等入口文件，把整个应用包裹在NavigationContainer中（例如：App.js或者index.js中）
+- 在App.js或者App.tsx或者index.js等入口文件，把整个应用包裹在NavigationContainer中、
+  （例如：App.js或者index.js中）;而且NavigationContainer组件在整个应用中只使用一次，一般情况下不要嵌套使用它
 - 示例代码
   import 'react-native-gesture-handler';
   import * as React from 'react';

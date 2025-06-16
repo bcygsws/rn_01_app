@@ -32,7 +32,7 @@ import {Provider} from 'react-redux';
 import store from '@/store';
 import Splash from '@/pages/splash';
 
-
+// 原生栈导航
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): React.JSX.Element {
