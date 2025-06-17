@@ -114,6 +114,7 @@ To learn more about React Native, take a look at the following resources:
 ## 构建过程
 
 - 创建项目：npx @react-native-community/cli init myApp_01
+- 拓展：指定版本号创建项目：npx @react-native-community/cli init myApp_01 --version 0.72.4
 
 ## 相关gradle的基本配置
 
@@ -251,7 +252,12 @@ To learn more about React Native, take a look at the following resources:
     - npm install react-native-reanimated(动画增强)
     - react-native-gesture-handler（手势处理,react-navigation
       7版本不需要了）
-    - react-native-screens（屏幕处理组件）
+    -
+  react-native-screens（屏幕处理组件）;为使得该依赖生效，[参考文档](https://react-navigation.nodejs.cn/docs/getting-started)
+  通常还需要再android/app/src/main/java/com/rn_01_app/MainActivity.kt中添加如下代码：
+  override fun onCreate(savedInstanceState: Bundle?) {
+  super.onCreate(null)
+  }
     - react-native-pager-view，material-bottom-tabs（底部导航）依赖的组件
     - react-native-safe-area-context（处理刘海屏的问题）
     - @react-native-community/masked-view;以此实现在
