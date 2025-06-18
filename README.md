@@ -118,7 +118,7 @@ To learn more about React Native, take a look at the following resources:
 
 ## 相关gradle的基本配置
 
-- 路径gradle/wrapper/gradle-wrapper.properties中的distributedUrl切换完本地下载好的gradle.
+- 路径android/gradle/wrapper/gradle-wrapper.properties中的distributedUrl切换完本地下载好的gradle.
 - 在项目目录android/local.properties文件，添加如下内容：sdk.dir=E:/android-studio/SDK，以声明环境变量中的ANDROID_HOME的值
 -
 
@@ -137,7 +137,7 @@ To learn more about React Native, take a look at the following resources:
 
 ## 其他配置
 
-- 在android/gradle.properties中添加如下内容：
+- 在android/gradle.properties中添加如下内容：(试验性功能)
 - # add myself;to solve the problem:app start,but can't find path
 - # at old version,it is com.android.build.gradle.overridePathCheck=true
 - android.overridePathCheck=true
@@ -155,12 +155,13 @@ To learn more about React Native, take a look at the following resources:
 
 - [什么是adb](https://developer.baidu.com/article/details/3305955)
 - adb是Android Debug Bridge的简称，是一个用于调试Android手机的命令行工具，它提供了一些命令，用于管理模拟器、连接手机、安装、卸载、调试应用程序等操作
-- adb的工作原理：adb有三部分组成，分别为客户端、服务器和守护进程（daemon）；当开发者使用命令行终端运行adb命令时，客户端会将命令发送给服务端，服务端将命令转发
-  相应的守护进程，守护进程在设备上运行，执行结果返回给服务端；服务端再将结果转发给客户端，最终显示在命令行终端上
+- adb的工作原理：adb有三部分组成，分别为客户端、服务器和守护进程（daemon）；当开发者使用命令行终端运行adb命令时，客户端会将命令发送给服务端，服务端
+  将命令转发相应的守护进程，守护进程在设备上运行，执行结果返回给服务端；服务端再将结果转发给客户端，最终显示在命令行终端上
 - adb devices 查看手机连接的情况，adb默认端口是5037端口，如果端口被占用，则需要查看端口占用情况，释放该端口
     - 查找该端口下的任务id：task_id，使用命令：netstat -ano|findstr 5037
     - 查看任务id所在的进程id，process_id;使用命令：tasklist |findstr task_id
     - 杀掉该进程：taskkill /f /pid process_id
+    - 杀掉该进程：taskkill /f /im node.exe 其中/im 表示image name，应用程序名称；/f 同上表示强制
     - [杀死5037端口占用的命令](https://www.cnblogs.com/testhub/p/6284091.html)
 
 - 切换到SDK安装目录下，E:\android-studio\SDK\platform-tools,执行以下命令：
