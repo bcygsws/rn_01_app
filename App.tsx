@@ -70,6 +70,7 @@ function App(): React.JSX.Element {
                             }/>
                             <Stack.Screen name={'Detail'} component={Detail} options={{title: '详情页'}}/>
                             <Stack.Screen name={'Register'} component={Register} options={{title: '注册'}}/>
+                            {/*通过isLogin值的判定，来实现重定向到登录页Login中的，开始设计时默认Main路由(initialRouteName)*/}
                             <Stack.Screen name={'Login'} component={Login} options={{
                                 headerShown: false,
                             }}/>
