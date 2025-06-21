@@ -19,6 +19,7 @@ module.exports = {
  * 2.在babel.config.js文件中添加配置
  * 其中root属性指定项目根目录，extensions属性指定文件扩展名，alias属性指定别名
  *
+ *
  * 3.在tsconfig.json文件中添加配置
  * "baseUrl": ".",
  *     "paths": {
