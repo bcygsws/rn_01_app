@@ -136,7 +136,7 @@ const LoginScreen = () => {
 
         return (
             <View style={{flex: 1}}>
-                {/*登录页图片背景*/}
+                {/*登录页图片背景，backgroundSize:cover或contain，也可以是百分比或具体尺寸*/}
                 <ImageBackground
                     source={require('@/assets/images/img03.jpg')}
                     resizeMode={'cover'}
