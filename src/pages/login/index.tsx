@@ -148,8 +148,10 @@ const LoginScreen = () => {
                     <Animatable.View animation={'fadeInUpBig'} style={styles.footer}>
                         {/*登录表单*/}
                         {/*Bug修复；必须给ScrollView添加该属性，否则其内部嵌入的TouchOpacity无法提交；参考：
-                    https://juejin.cn/post/6844903697558798350*/}
+                    https://juejin.cn/post/6844903697558798350 'handled', the keyboard will not dismiss
+                    automatically when the tap was handled by a children, (or captured by an ancestor).*/}
                         <ScrollView keyboardShouldPersistTaps={'handled'}>
+                            {/*用户名框布局和控制*/}
                             <View style={{
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
@@ -176,6 +178,7 @@ const LoginScreen = () => {
                                 <View style={styles.validText}><Text
                                     style={{color: 'red', fontSize: 12}}>用户名长度不能小于2</Text></View>}
                             {/*flex 布局；从左到右，行排列；所有才有left:0，就可以实现内嵌图标*/}
+                            {/*密码框布局和控制*/}
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <Ionicons name={'lock-closed-outline'} color={'#666'} size={18}
                                           style={styles.insertLeftIcon}/>
