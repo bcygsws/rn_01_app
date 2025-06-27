@@ -40,10 +40,11 @@ const LoginScreen = () => {
 
         const dispatch = useDispatch();
         // 操作时，传递的参数e，就是用户名或密码本身了
+        // 规则：用户长度>=2,密码长度>=6
         useEffect(() => {
             info.username.length >= 2 ? setIsUserValid(true) :
                 (info.username.length > 0 ? setIsUserValid(false) : setIsUserValid(true));
-            info.password.length >= 2 ? setIsPwdValid(true) :
+            info.password.length >= 6 ? setIsPwdValid(true) :
                 (info.password.length > 0 ? setIsPwdValid(false) : setIsPwdValid(true));
         }, [info]);
         const validateUser = (e: string) => {
@@ -174,9 +175,10 @@ const LoginScreen = () => {
                                         </Animatable.View> : null
                                 }
                             </View>
-                            {isUserValid ? <View style={styles.validText}><Text/></View> :
-                                <View style={styles.validText}><Text
-                                    style={{color: 'red', fontSize: 12}}>用户名长度不能小于2</Text></View>}
+                            {/*用户名输入长度校验，长度大于等于2合法*/}
+                            <View style={styles.validText}>{isUserValid ? <Text/> : <Text>
+                                <Text style={{color: 'red', fontSize: 12}}>用户名长度不能小于2</Text>
+                            </Text>}</View>
                             {/*flex 布局；从左到右，行排列；所有才有left:0，就可以实现内嵌图标*/}
                             {/*密码框布局和控制*/}
                             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -215,29 +217,19 @@ const LoginScreen = () => {
                                         null
                                 }
                             </View>
-                            {isPwdValid ?
-                                <View style={styles.validText}><Text/>
-                                    <TouchableOpacity style={{width: 30}} onPress={resetForm}>
-                                        <View style={styles.reset}>
-                                            < Text style={{
-                                                fontSize: 12,
-                                                color: '#2196f3',
-                                            }}>重置</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View> :
-                                <View style={styles.validText}>
-                                    <Text
-                                        style={{color: 'red', fontSize: 12}}>密码长度不能小于2</Text>
-                                    {/*重置表单*/}
-                                    <TouchableOpacity style={{width: 30}} onPress={resetForm}>
-                                        <View style={styles.reset}>
-                                            < Text style={{fontSize: 12, color: '#2196f3'}}>重置</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
-
-                            }
+                            {/*密码长度校验提醒文字*/}
+                            <View style={styles.validText}>
+                                {isPwdValid ? <Text/> :
+                                    <Text><Text style={{color: 'red', fontSize: 12}}>密码长度不能小于6</Text></Text>}
+                                <TouchableOpacity style={{width: 30}} onPress={resetForm}>
+                                    <View style={styles.reset}>
+                                        < Text style={{
+                                            fontSize: 12,
+                                            color: '#2196f3',
+                                        }}>重置</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
 
                             <TouchableOpacity style={styles.btn}
                                               onPress={doLogin}>
@@ -270,7 +262,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         width: '100%',
     },
-    check: {// 校验输入的用户名或者密码长度大于2，则显示一个对勾
+    check: {// 校验输入的用户名长度>=2，以及密码长度>=6，则显示一个对勾
         alignItems: 'center',
         flexDirection: 'row',
         height: '100%',
@@ -301,7 +293,6 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 40,
         paddingLeft: 25,
-        position: 'relative'
     },
     insertLeftIcon: {
         left: 0,
