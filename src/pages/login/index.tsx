@@ -168,6 +168,7 @@ const LoginScreen = () => {
                                     ref={userRef}
                                     value={info.username}
                                 />
+                                {/*注：isUserValid布尔变量、叠加用户名或密码的长度，使得当输入框没有输入内容时，不提示警告*/}
                                 {
                                     isUserValid && info.username.length ?
                                         <Animatable.View animation={'bounceIn'} style={styles.check}>
