@@ -1,5 +1,6 @@
 /**
  * @Desc:路由配置
+ * 是一个大部分键值为undefined的对象 {}
  *
  * */
 export type RootStackParamList = {
