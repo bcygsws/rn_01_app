@@ -1,6 +1,6 @@
 /**
  * @Desc:路由配置
- * 是一个大部分键值为undefined的对象 {}
+ * 是一个大部分键值为undefined的对象 {key:val,key1:val2,...}
  *
  * */
 export type RootStackParamList = {
