@@ -19,7 +19,7 @@ import {RootStackParamList} from '@/routes';
 
 const Detail = () => {
     const route = useRoute<RouteProp<RootStackParamList, 'Detail'>>();
-    const {url} = route.params ?? '';
+    const {url} = route.params ?? null;
     console.log('url===', url);
     return (
         <View style={{flex: 1}}>

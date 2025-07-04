@@ -16,7 +16,10 @@ import {
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
+
+/*放置导航路由的容器，一般只在项目中出现一次，用户不应该嵌套使用它*/
 import {NavigationContainer} from '@react-navigation/native';
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@/routes';
 import Main from '@/pages/main/index';

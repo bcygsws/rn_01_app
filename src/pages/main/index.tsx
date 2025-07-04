@@ -13,7 +13,6 @@ import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 // 一级路由Main，还有Register等等
-
 type NavProps = NavigationProp<RootStackParamList, 'Main'>;
 const Main = () => {
     const navigation = useNavigation<NavProps>();
@@ -30,7 +29,7 @@ const Main = () => {
             } else if (route.name === 'Profile') {
                 iconName = focused ? 'person' : 'person-outline';
             }
-            return <Ionicons name={iconName!} size={size} color={color}/>;
+            return <Ionicons name={iconName!} color={color} size={size}/>;
         },
         headerShown: true
     })}>
