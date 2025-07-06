@@ -60,6 +60,7 @@ const Main = () => {
         }}/>
     </Tab.Navigator>) : (<>{navigation.navigate('Login')}</>);
 };
+
 // const styles = StyleSheet.create({
 //     homeContainer: {
 //         alignItems: 'center',
