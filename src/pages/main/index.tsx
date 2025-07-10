@@ -12,7 +12,8 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
-// 一级路由Main，还有Register等一级路由
+
+// 一级路由Main，还有Register等一级路由组件
 type NavProps = NavigationProp<RootStackParamList, 'Main'>;
 const Main = () => {
     const navigation = useNavigation<NavProps>();
@@ -68,4 +69,5 @@ const Main = () => {
 //         justifyContent: 'center',
 //     },
 // });
+
 export default Main;
