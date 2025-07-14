@@ -63,8 +63,6 @@ const Main = () => {
 };
 
 
-
-
 // const styles = StyleSheet.create({
 //     homeContainer: {
 //         alignItems: 'center',
